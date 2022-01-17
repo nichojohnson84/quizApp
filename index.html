@@ -10,16 +10,63 @@
   </head>
   <body>
     <header>
+      <div class="container"></div>
         <a class="btn-1" href="/highscores.html">High Scores</a>
-        <div class="timer" href="placeholder-text">Countdown</div>
+        <div class="timer" id="countdown">Timer</div>-->
     </header>  
     <div class="container">
-      <div id="home" class="flex-center flex-column">
-        <h1>Coding Quiz Countdown</h1>
-        <a class="btn" href="/game.html">Play</a>
-      </div>
-    </div>
-    <script src="assets\js\script.js"></script>
-    </script>
+        <div class="quizBox">
+           <div id="quiz"></div>
+             <h1>Coding Quiz Countdown</h1>
+            <div class="quizHeader">
+                <p id="progress"> Question x of y</p>
+                <p id="countDown"></p>
+            </div>
+            <p id="question"></p>
+
+            <div class="buttons">
+                <!-- <button class="playButton" id="play">Play</button>-->
+                <button class="btn" id="btn0">
+                    A. <span id="choice0"></span>
+                </button>
+                <button class="btn" id="btn1">
+                    B.  <span id="choice1"></span>
+                </button>
+                <button class="btn" id="btn2">
+                    C.  <span id="choice2"></span>
+                </button>
+                <button class="btn" id="btn3">
+                    D.  <span id="choice3"></span>
+                </button>
+                <!--<div class="final-page" style="display: none">
+                  <div id="message"></div>
+                  <div id="score"></div>
+                  <div id="correct"></div>
+                  <div id="incorrect"></div>
+                  <br>
+                  <div id="initials">
+                      <form>
+                          Enter initials:<input type="text" placeholder="Enter initials here" id="userInput"
+                              name="initials">
+                          <input type="button" id="submitInitials" style="color:white;" value="Submit">
+                      </form>
+                  </div>
+                </div>
+              <div class="highScorePage" style="display:none">
+                  <h1 id="hsTitle">Highscores</h1>
+                  <hr id="win" />
+                  <ul id="hsArray"></ul>
+                  <!-- <hr id = "win"/> -->
+                  <div>
+                      <button type="button" id="goBack">Back</button>
+                      <button type="button" id="resetScores">Reset Highscores</button>
+                  </div>
+              </div>        
+          </div>
+        </div>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
+<!--create element, select text of questions and answers, append the element to the container-->
+<!--create the timer-->
+
