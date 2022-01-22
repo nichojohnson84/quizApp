@@ -1,3 +1,5 @@
+var play = document.getElementById("play")
+
 // Create a quiz class
 class Quiz {
     constructor(questions) {
@@ -13,6 +15,8 @@ class Quiz {
     guess(answer) {
         if(this.getQuestionIndex().isCorrectAnswer(answer)) {
             this.score++;
+        } else {
+            quizTime = quizTime -10
         }
         this.questionIndex++;
     }
@@ -38,17 +42,22 @@ class Question {
 //Display Question
 function displayQuestion() {
     if (quiz.isEnded()) {
+        clearInterval(quizTimer)
         showScores();
+
     } else {
         //show question
         let questionElement = document.getElementById("question");
-        questionElement.innerHTML = quiz.getQuestionIndex().text;
+        questionElement.textContent = quiz.getQuestionIndex().text;
 
         //show options
         let choices = quiz.getQuestionIndex().choices;
+        console.log(choices)
         for (let i = 0; i < choices.length; i++) {
             let choiceElement = document.getElementById("choice" + i);
-            choiceElement.innerHTML = choices[i];
+            console.log(choices[i])
+            choiceElement.textContent = choices[i];
+            console.log(choiceElement)
             guess("btn" + i, choices[i]);
         }
 
@@ -79,7 +88,7 @@ function showScores() {
     let quizEndHTML =
         `
             <h1>Quiz Completed</h1>
-            <h2 id="score">You Scored: ${quiz.score} of ${quiz.questions.length}</h2>
+            <h2 id="score">You Scored: ${quizTime}</h2>
             <div class="quiz-repeat">
                 <a href="index.html">Take Quiz Again</a>
             </div>
@@ -91,13 +100,13 @@ function showScores() {
 // Create quiz questions
 let questions = [
     new Question(
-        "Inside which HTML element do we put the JavaScript?", ["<scripting>'", '<script>', '<js>', '<javascript>'], '<script>'
+        "Inside which HTML element do we put the JavaScript?", ['<scripting>', '<script>', '<js>', '<javascript>'], '<script>'
     ),
     new Question(
         "How do you create a function in JavaScript?", ["function myFunction[]", "function = myFunction()", "function:myFunction()", "function myFunction ()"], "funcion = myFunction()"
     ),
     new Question(
-        "How do you write 'Hello World' in an alert box?", ["msg('Hello World');', 'msgBox('Hello World');', 'alert('Hello World');', 'alertBox('Hello World');"], 'alert("Hello World");'
+        "How do you write 'Hello World' in an alert box?", ["msg('Hello World')", "msgBox('Hello World');", "alert('Hello World');", "alertBox('Hello World');"], "alert('Hello World');"
     ),
     new Question(
         "How do you call a function named 'myFunction'?", ["call function myFunction()", "call myFunction()", "myFunction()", "function.myFunction()"], "myFunction()"
@@ -110,27 +119,29 @@ let questions = [
 let quiz = new Quiz(questions);
 
 //display question
-displayQuestion();
+play.addEventListener (
+    "click", function (){
+    displayQuestion()
+    startCountdown ()
+});
 
 //add a countdown
-let time = 3;
-let quizTimeInMinutes = time * 60 * 60;
-quizTime = quizTimeInMinutes / 60
-
+let time = 80;
+let quizTime = time;
 let counting = document.getElementById("countDown");
-
+let quizTimer
 function startCountdown() {
-    let quizTimer = setInterval(function() {
-        if (quizTimer <=0) {
+     quizTimer = setInterval(function() {
+         
+        
+        if (quizTime <= 0) {
             clearInterval(quizTimer);
             showScores();
         } else {
             quizTime--;
-            let sec = Math.floor(quizTime % 60);
-            let min = Math.floor(quizTime / 60) % 60;
-            counting.innerHTML = `TIME: ${min} : ${sec}`;
+            
+            counting.textContent = `TIME: ${quizTime}`;
         }
     }, 1000);
 }
 
-startCountdown();

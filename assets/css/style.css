@@ -197,9 +197,25 @@
       border: 0.1rem solid #151E3F;
       margin-bottom: 1rem;
       text-decoration: none;
-      color: #151E3F;
-      background-color: white;
+      color: white;
+      background-color: red;
       float: right;
+  }
+
+  #play {
+    display: center;
+    justify-content: center;
+      align-items: center;
+      font-size: 1.8rem;
+      padding: 1rem 1rem;
+      width: 18rem;
+      text-align: center;
+      border: 0.1rem solid #151E3F;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: white;
+      background-color: navy;
+      
   }
 
   .btn-1 {
@@ -218,38 +234,13 @@
       float:left
   }
 
-  /*.playButton {
-    font-size: 1.8rem;
-    padding: 1rem 0;
-    width: 15rem;
-    text-align: center;
-    border: 0.1rem solid #151E3F;
-    margin-bottom: 1rem;
-    text-decoration: none;
-    color: #151E3F;
-    background-color: white;
-  }
-  
-  .playButton:hover{
-    cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 #151E3F;
-    transform: translateY(-0.1rem);
-    transition: transform 150ms;
-  }
-  
-  .playButton[disabled]:hover {
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-  }*/
-
-  .btn-1:hover{
+  .btn-1:hover, #play:hover {
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 #151E3F;
     transform: translateY(-0.1rem);
       }
 
-  .btn-1[disabled]:hover {
+  .btn-1[disabled]:hover, #play[disabled]:hover {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
